@@ -172,6 +172,9 @@
     \ifx\KU@faculty\KU@KU\ifKUtitlepage@alt\else
       \KUtitlepage@toptitletrue
     \fi\fi
+    \ifx\KU@faculty\KU@NAT\ifKUtitlepage@alt\else
+      \KUtitlepage@toptitletrue
+    \fi\fi
     \ifKUtitlepage@toptitle
       \raisebox{-0.07567\paperwidth}[0pt][0pt]{\rlap{\hskip-\Gm@lmargin
         \KU@declareimage@[width=\paperwidth]{KU\KU@faculty\KU@tmpa titletop}%
@@ -242,6 +245,10 @@
        \edef\KU@tmp{\csname KU@\KU@language Name\endcsname}%
        \rmfamily\fontsize{10}{10pt}\scshape\mdseries
        \expandafter\lowercase\expandafter{\KU@tmp}%
+     \else\ifx\KU@faculty\KU@NAT
+       \edef\KU@tmp{\csname KU@\KU@language Name\endcsname}%
+       \rmfamily\fontsize{10}{10pt}\scshape\mdseries
+       \expandafter\lowercase\expandafter{\KU@tmp}%
      \else
        \sffamily\fontsize{8}{8pt}\upshape\mdseries
        \csname KU@\KU@faculty\KU@language Name\endcsname%
@@ -260,7 +267,7 @@
       \ifx\beamer@subtitle\@empty\else
         {\usebeamerfont{subtitle}\vskip.1\baselineskip%
          \usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
-      \fi%     
+      \fi%
     {\usebeamerfont{author}\vskip\baselineskip
      \usebeamercolor[fg]{author}\insertauthor\par}%
     \ifKUtitlepage@alt
